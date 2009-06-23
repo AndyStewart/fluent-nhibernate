@@ -466,7 +466,7 @@ namespace FluentNHibernate.Testing.AutoMap.Apm
 
             public void Apply(IIdentityPart target)
             {
-                target.SetAttribute("test", "true");
+                target.Access.AsField();
             }
         }
 
@@ -479,7 +479,7 @@ namespace FluentNHibernate.Testing.AutoMap.Apm
 
             public void Apply(IClassMap target)
             {
-                target.SetAttribute("test", "true");
+                target.BatchSize(10);
             }
         }
 
@@ -492,7 +492,7 @@ namespace FluentNHibernate.Testing.AutoMap.Apm
 
             public void Apply(IManyToOnePart target)
             {
-                target.SetAttribute("test", "true");
+                target.Access.AsField();
             }
         }
 
@@ -505,7 +505,7 @@ namespace FluentNHibernate.Testing.AutoMap.Apm
 
             public void Apply(IOneToManyPart target)
             {
-                target.SetAttribute("test", "true");
+                target.Access.AsField();
             }
         }
     }

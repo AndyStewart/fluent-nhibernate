@@ -8,7 +8,6 @@ namespace FluentNHibernate.MappingModel
     {
         private readonly List<ColumnMapping> columns = new List<ColumnMapping>();
         private readonly AttributeStore<PropertyMapping> attributes = new AttributeStore<PropertyMapping>();
-        private readonly IDictionary<string, string> unmigratedAttributes = new Dictionary<string, string>();
 
         public override void AcceptVisitor(IMappingModelVisitor visitor)
         {
@@ -23,11 +22,6 @@ namespace FluentNHibernate.MappingModel
             get { return attributes; }
         }
 
-        public IDictionary<string, string> UnmigratedAttributes
-        {
-            get { return unmigratedAttributes; }
-        }
-
         public string Name
         {
             get { return attributes.Get(x => x.Name); }
@@ -37,6 +31,12 @@ namespace FluentNHibernate.MappingModel
         public bool IsNameSpecified
         {
             get { return attributes.IsSpecified(x => x.Name); }
+        }
+
+        public string Access
+        {
+            get { return attributes.Get(x => x.Access); }
+            set { attributes.Set(x => x.Access, value); }
         }
 
         public bool Insert
@@ -57,28 +57,34 @@ namespace FluentNHibernate.MappingModel
             set { attributes.Set(x => x.Formula, value); }
         }
 
+        public bool OptimisticLock
+        {
+            get { return attributes.Get(x => x.OptimisticLock); }
+            set { attributes.Set(x => x.OptimisticLock, value); }
+        }
+
+        public string Generated
+        {
+            get { return attributes.Get(x => x.Generated); }
+            set { attributes.Set(x => x.Generated, value); }
+        }
+
         public string Type
         {
             get { return attributes.Get(x => x.Type); }
             set { attributes.Set(x => x.Type, value); }
         }
 
-        public string UniqueKey
-        {
-            get { return attributes.Get(x => x.UniqueKey); }
-            set { attributes.Set(x => x.UniqueKey, value); }
-        }
-
         public PropertyInfo PropertyInfo { get; set; }
+        
+        public IEnumerable<ColumnMapping> Columns
+        {
+            get { return columns; }
+        }
 
         public void AddColumn(ColumnMapping mapping)
         {
             columns.Add(mapping);
-        }
-
-        public void AddUnmigratedAttribute(string name, string value)
-        {
-            unmigratedAttributes[name] = value;
         }
     }
 }

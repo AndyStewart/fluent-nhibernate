@@ -13,7 +13,8 @@ namespace FluentNHibernate.Conventions
 
         public bool Accept(IManyToOnePart target)
         {
-            return string.IsNullOrEmpty(target.GetColumnName());
+            throw new NotImplementedException("Awaiting convention DSL");
+            //return string.IsNullOrEmpty(target.GetColumnName());
         }
 
         public void Apply(IManyToOnePart target)
@@ -34,10 +35,11 @@ namespace FluentNHibernate.Conventions
 
         public bool Accept(IManyToManyPart target)
         {
-            acceptParent = string.IsNullOrEmpty(target.ParentKeyColumn);
-            acceptChild = string.IsNullOrEmpty(target.ChildKeyColumn);
+            throw new NotImplementedException("Awaiting convention DSL");
+            //acceptParent = string.IsNullOrEmpty(target.ParentKeyColumn);
+            //acceptChild = string.IsNullOrEmpty(target.ChildKeyColumn);
 
-            return acceptParent || acceptChild;
+            //return acceptParent || acceptChild;
         }
 
         public void Apply(IManyToManyPart target)
