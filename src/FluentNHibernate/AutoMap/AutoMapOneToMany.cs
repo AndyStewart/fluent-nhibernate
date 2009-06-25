@@ -26,11 +26,6 @@ namespace FluentNHibernate.AutoMap
 
         public void Map<T>(AutoMap<T> classMap, PropertyInfo property)
         {
-//            var classMapType = typeof(ClassMap<T>);
-//            var hasManyMethod = classMapType.GetMethod("HasMany", new[] { typeof(Expression<Func<T, object>>) });
-//            var listType = property.PropertyType.GetGenericArguments()[0];
-//            var genericHasManyMethod = hasManyMethod.MakeGenericMethod(listType);
-//            genericHasManyMethod.Invoke(classMap, new object[] { ExpressionBuilder.Create<T>(property) });
         }
 
         public void Map(ClassMapping classMap, PropertyInfo property)
