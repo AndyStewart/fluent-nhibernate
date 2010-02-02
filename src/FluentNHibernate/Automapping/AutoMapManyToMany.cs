@@ -30,8 +30,13 @@ namespace FluentNHibernate.Automapping
         private static Member GetInverseProperty(Member property)
         {
             Type type = property.PropertyType;
-            var inverseSide = type.GetGenericTypeDefinition()
-                .MakeGenericType(property.DeclaringType);
+
+            var genericTypeDefinition = type.GetGenericTypeDefinition();
+
+            if (genericTypeDefinition.GetGenericArguments().Length > 1)
+                return null;
+
+            var inverseSide = genericTypeDefinition.MakeGenericType(property.DeclaringType);
 
             var argument = type.GetGenericArguments()[0];
             return argument.GetProperties()
