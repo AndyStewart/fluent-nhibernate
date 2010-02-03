@@ -27,6 +27,7 @@ namespace FluentNHibernate.Testing.Automapping
         {
             VerifyAutoMap<ValidTimestampClassWithDateTime>()
                 .Element("//version").HasAttribute("name", "Timestamp")
+                .Element("//version").HasAttribute("type", "Timestamp")
                 .Element("//version/column").HasAttribute("name", "`Timestamp`");
         }
 

@@ -50,6 +50,9 @@ namespace FluentNHibernate.Automapping
 
         private TypeReference GetDefaultType(Member property)
         {
+            if (property.PropertyType == typeof(DateTime))
+                return new TypeReference("Timestamp");
+
             if (IsSqlTimestamp(property))
                 return new TypeReference("BinaryBlob");
 
