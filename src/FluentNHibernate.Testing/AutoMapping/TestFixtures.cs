@@ -128,6 +128,12 @@ namespace FluentNHibernate.Automapping.TestFixtures
         public virtual int Timestamp { get; set; }
     }
 
+    public class ValidTimestampClassWithDateTime
+    {
+        public virtual int Id { get; set; }
+        public virtual DateTime Timestamp { get; set; }
+    }
+
     public class ValidVersionClass
     {
         public virtual int Id { get; set; }
@@ -137,7 +143,7 @@ namespace FluentNHibernate.Automapping.TestFixtures
     public class InvalidTimestampClass
     {
         public virtual int Id { get; set; }
-        public virtual DateTime Timestamp { get; set; }
+        public virtual string Timestamp { get; set; }
     }
 
     public class InvalidVersionClass

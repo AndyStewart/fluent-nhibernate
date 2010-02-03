@@ -23,6 +23,14 @@ namespace FluentNHibernate.Testing.Automapping
         }
 
         [Test]
+        public void PropertyNamedTimestampMappedAsVersionWithTimestampProperty()
+        {
+            VerifyAutoMap<ValidTimestampClassWithDateTime>()
+                .Element("//version").HasAttribute("name", "Timestamp")
+                .Element("//version/column").HasAttribute("name", "`Timestamp`");
+        }
+
+        [Test]
         public void PropertyNamedVersionMappedAsVersion()
         {
             VerifyAutoMap<ValidVersionClass>()
